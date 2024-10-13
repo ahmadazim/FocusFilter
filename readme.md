@@ -1,8 +1,8 @@
-# Paper Recommendation and Filtering
+# FocusFilter: Personalized Paper Recommender
 
 ## Overview
 
-This project is a paper filtering/recommendation system designed to help researchers pick the most relevant papers to read from the plethora of academic papers published daily on platforms like arXiv, bioRxiv, medRxiv, and PubMed. User interests, relevant research topics, important authors, and important author affiliations can be specified as filters to give personalized paper recommendations. Final paper recommendations are powered by LLMs.
+This project is a personalized paper recommendation system designed to help researchers focus on the most relevant papers to read from the plethora of academic papers published daily on platforms like arXiv, bioRxiv, medRxiv, and PubMed. User interests, relevant research topics, important authors, and important author affiliations can be specified as filters to give personalized paper recommendations. Final paper recommendations are powered by LLMs. 
 
 
 ## Usage
