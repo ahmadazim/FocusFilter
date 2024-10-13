@@ -11,7 +11,7 @@ SOURCES = [
     "medrxiv",
     "pubmed"
 ]
-MAX_RESULTS = 5
+MAX_RESULTS = 100
 PAST_DAYS = 3
 
 def collect_papers(is_save=False):
