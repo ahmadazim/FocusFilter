@@ -1,0 +1,6 @@
+.openai_api_key
+*.pkl
+__pycache__
+*__pycache__
+.vscode/settings.json
+.DS_Store
