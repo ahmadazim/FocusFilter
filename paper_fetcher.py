@@ -12,7 +12,7 @@ SOURCES = [
     "pubmed"
 ]
 MAX_RESULTS = 100
-PAST_DAYS = 3
+PAST_DAYS = 7
 
 def collect_papers(is_save=False):
     fetched_papers = []
@@ -52,14 +52,14 @@ def fetch_arxiv_papers(start_date, topics, authors):
 
     client = arxiv.Client()
     search = arxiv.Search(
-        query = query,
-        max_results = MAX_RESULTS,
-        sort_by = arxiv.SortCriterion.SubmittedDate
+        query=query,
+        max_results=MAX_RESULTS,
+        sort_by=arxiv.SortCriterion.SubmittedDate
     )
     results = client.results(search)
 
     papers = []
-    for result in client.results(search):
+    for result in results:
         if result.published.date() >= start_date:
             paper = {
                 'title': result.title,
@@ -89,7 +89,7 @@ def fetch_pubmed_papers(start_date, topics, authors, PM_journals):
     additional = '("Journal Article"[Publication Type])'
     query = f"{combined_query} AND {date_range} AND {additional}"
 
-    max_attempts = 5
+    max_attempts = 10
     attempt = 0
     papers = []
 
@@ -102,9 +102,9 @@ def fetch_pubmed_papers(start_date, topics, authors, PM_journals):
                     f"{(author['firstname'] or '').strip()} {(author['lastname'] or '').strip()}".strip()
                     for author in article.authors
                 ]
-                author_names = [name for name in author_names if name is not None and name != '']
-                affiliations = list(set([author['affiliation'] for author in article.authors if author['affiliation'] is not None and author['affiliation'] != '']))
-                
+                author_names = [name for name in author_names if name]
+                affiliations = list(set([author['affiliation'] for author in article.authors if author['affiliation']]))
+
                 paper = {
                     'title': article.title,
                     'authors': author_names,
